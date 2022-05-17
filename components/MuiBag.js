@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Drawer, Box, Typography } from '@mui/material'
+import { Drawer, Box, Typography, SwipeableDrawer } from '@mui/material'
 import { ShopContext } from '../context/shopContext'
 
 export const MuiBag = () => {
@@ -39,7 +39,7 @@ export const MuiBag = () => {
 
   return (
     <>
-      <Drawer
+      <SwipeableDrawer
         anchor={isDesktop ? 'right' : 'bottom'}
         open={isBagOpen}
         onClose={() => closeBag(false)}
@@ -113,7 +113,7 @@ export const MuiBag = () => {
             <div className="h-[60vh]">Your bag is empty.</div>
           )}
         </Box>
-      </Drawer>
+      </SwipeableDrawer>
     </>
   )
 }
