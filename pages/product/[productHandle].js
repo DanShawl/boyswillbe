@@ -10,12 +10,12 @@ const Product = ({ product }) => {
   const { addItemToCheckout, checkout, removeLineItem } =
     useContext(ShopContext)
 
-  console.log(product)
+  // console.log(product)
 
   const addToCart = async () => {
     const storage = window.localStorage
     let checkoutId = storage.getItem('checkoutId')
-    console.log(checkoutId)
+    // console.log(checkoutId)
     if (!checkoutId) {
       const checkout = await client.checkout.create()
       checkoutId = checkout.id

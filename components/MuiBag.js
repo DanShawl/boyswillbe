@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { Drawer, Box, Typography, SwipeableDrawer } from '@mui/material'
+import {
+  Drawer,
+  Box,
+  Typography,
+  SwipeableDrawer,
+  Divider,
+} from '@mui/material'
 import { ShopContext } from '../context/shopContext'
 
 export const MuiBag = () => {
@@ -44,6 +50,7 @@ export const MuiBag = () => {
         open={isBagOpen}
         onClose={() => closeBag(false)}
       >
+        {/* <Divider></Divider> */}
         <Box
           p={2}
           className="w-screen px-3 tracking-tight sm:w-[400px] lg:w-[550px]"
@@ -110,7 +117,9 @@ export const MuiBag = () => {
               </div>
             ))
           ) : (
-            <div className="h-[60vh]">Your bag is empty.</div>
+            <div className="flex h-[60vh] items-center justify-center text-center">
+              <p>Your bag is empty.</p>
+            </div>
           )}
         </Box>
       </SwipeableDrawer>

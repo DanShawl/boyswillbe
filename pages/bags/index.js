@@ -3,9 +3,9 @@ import { client } from '../../utils/shopify'
 import Link from 'next/dist/client/link'
 
 export default function Bags({ products }) {
-  console.log(products)
+  // console.log(products)
   return (
-    <div className="mx-1 grid grid-cols-2 lg:grid-cols-3">
+    <div className="mx-1 mb-8 grid grid-cols-2 lg:grid-cols-3">
       {products
         ? products.map((product) => (
             <Link href={`/bags/${product.handle}`} className="cursor-pointer">

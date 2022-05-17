@@ -18,6 +18,11 @@ export default function Home({ products, product }) {
         /> */}
         {/* <Image src={boyswillbeimg} objectFit={'contain'} /> */}
 
+        {/* <img
+          src="/boyswillbe-hero-image.jpg"
+          alt=""
+          className="max-h-[800px] w-full object-cover "
+        /> */}
         <img
           src="/boyswillbe-hero-image.jpg"
           alt=""

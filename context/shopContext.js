@@ -67,7 +67,7 @@ class ShopProvider extends Component {
     client.checkout.fetch(checkoutId).then((checkout) => {
       this.setState({ checkout: checkout })
     })
-    console.log(checkoutId)
+    // console.log(checkoutId)
   }
 
   addItemToCheckout = async (variantId, quantity) => {
@@ -88,7 +88,7 @@ class ShopProvider extends Component {
 
     this.setState({ checkout: checkout })
     //  addLineItems was provided by shopify
-    console.log(checkout.lineItems)
+    // console.log(checkout.lineItems)
     this.openBag()
   }
 

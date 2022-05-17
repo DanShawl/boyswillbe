@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const SideNav = () => {
   return (
-    <div className="sticky top-0 flex flex-col px-3 md:h-screen md:items-end md:px-6 md:pt-12">
+    <div className="sticky top-0 flex flex-col border-t border-neutral-300 px-3 sm:pt-12 md:mt-0 md:h-screen md:items-end md:border-none md:px-6">
       <ul className="flex justify-between px-5 py-5 md:flex-col md:space-y-1 md:text-right">
         <div>
           <li className="text-xs md:text-[11px]">

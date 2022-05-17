@@ -11,7 +11,7 @@ const Product = ({ product }) => {
   const { addItemToCheckout, checkout, removeLineItem } =
     useContext(ShopContext)
 
-  console.log(product)
+  // console.log(product)
 
   // const addToCart = async () => {
   //   const storage = window.localStorage
@@ -25,7 +25,7 @@ const Product = ({ product }) => {
   // }
 
   return (
-    <div className="grid grid-cols-1 tracking-tight md:grid-cols-7">
+    <div className="mb-8 grid grid-cols-1 tracking-tight md:grid-cols-7">
       <div>
         <div className="md:col-span-4">
           <img
@@ -63,7 +63,7 @@ const Product = ({ product }) => {
 
         <div className="flex justify-between pb-5">
           <p className="text-sm font-bold">$ {product.variants[0].price}</p>
-          <div className="flex items-center gap-x-2 text-sm uppercase">
+          <div className="flex items-center gap-x-2 text-xs uppercase">
             <MdCircle
               className={`text-xs ${
                 product.availableForSale ? 'text-green-300' : 'text-red-500'
@@ -78,14 +78,15 @@ const Product = ({ product }) => {
             <h2>{variant.title}</h2>
           ))}
         </div> */}
-        <div>
+        <div className="mb-3">
           <button
-            className="w-full bg-black py-2 text-sm text-white"
+            className="w-full bg-black py-2 text-sm text-white "
             onClick={() => addItemToCheckout(product.variants[0].id, 1)}
           >
             PLACE IN BAG
           </button>
         </div>
+        <p className="text-xs font-light">{product.description}</p>
       </div>
       {/* video @ 1:28 for changing main image */}
     </div>
@@ -104,8 +105,8 @@ export const getServerSideProps = async ({ query }) => {
     props: {
       product: product,
       // infos: JSON.parse(JSON.stringify(infos)),
-      // policies: JSON.parse(JSON.stringify(policies)),
       product: JSON.parse(JSON.stringify(product)),
+      // policies: JSON.parse(JSON.stringify(policies)),
       // product: JSON.parse(JSON.stringify(product)),
     },
   }

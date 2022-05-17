@@ -11,6 +11,8 @@ import {
 
 import { ShopContext } from '../context/shopContext'
 
+// import { client } from '../utils/shopify'
+
 const NavBar = () => {
   const [openNav, setOpenNav] = useState(false)
   const { isBagOpen, openBag, closeBag, checkout } = useContext(ShopContext)
@@ -64,10 +66,11 @@ const NavBar = () => {
       <ul
         className={
           (openNav ? 'left-0 flex-1 px-5 ' : '-left-full ') +
-          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3 bg-white  pt-8 font-semibold leading-3 text-black duration-500 md:static md:w-auto md:space-y-0 md:bg-transparent md:font-normal'
+          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white pt-8 font-semibold leading-3 text-black duration-500 md:static md:w-auto md:space-y-0 md:bg-transparent md:font-normal'
         }
         // className="flex items-center justify-between space-x-7 p-2 text-gray-700"
       >
+        <h3 className="pb-3 md:hidden">APPAREL</h3>
         <li
           className={`text-xs md:text-[11px]`}
           onClick={() => setOpenNav(!openNav)}
@@ -103,9 +106,36 @@ const NavBar = () => {
             <a>COLLECTIONS</a>
           </Link>
         </li>
+        <h3 className=" pt-10 pb-3 md:hidden">MY BAG</h3>
+        <div className="flex space-x-1 overflow-x-scroll md:hidden">
+          {checkout.lineItems?.length
+            ? checkout.lineItems?.map((item) => (
+                <img
+                  src={item.variant?.image.src}
+                  alt=""
+                  className=" w-[45%]"
+                />
+              ))
+            : null}
+        </div>
       </ul>
     </nav>
   )
 }
 
 export default NavBar
+
+// export const getServerSideProps = async () => {
+//   // const products = await client.product.fetchAll() // Fetch products
+//   const collections = await client.collection.fetchAllWithProducts() // Fetch products
+//   // const product = await client.product.fetchByHandle()
+//   return {
+//     props: {
+//       collections: JSON.parse(JSON.stringify(collections)),
+//       // infos: JSON.parse(JSON.stringify(infos)),
+//       // policies: JSON.parse(JSON.stringify(policies)),
+//       // products: JSON.parse(JSON.stringify(products)),
+//       // product: JSON.parse(JSON.stringify(product)),
+//     },
+//   }
+// }
