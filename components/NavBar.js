@@ -18,7 +18,10 @@ const NavBar = () => {
   return (
     <nav className="sticky top-0 z-20 h-14 flex-col items-center justify-center bg-white px-3 md:h-screen md:pl-10 md:pt-6">
       <div className="flex h-[100%] items-center justify-between text-left md:h-7 md:items-start">
-        <a href="/" className="text-left text-2xl font-extrabold sm:text-sm">
+        <a
+          href="/"
+          className="ml-2 text-left text-2xl font-extrabold sm:text-sm"
+        >
           {/* <h1 className="text-lg">BOYS WILL BE</h1> */}
 
           <img

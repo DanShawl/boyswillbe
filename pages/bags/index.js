@@ -9,7 +9,7 @@ export default function Bags({ products }) {
       {products
         ? products.map((product) => (
             <Link href={`/bags/${product.handle}`} className="cursor-pointer">
-              <div className="mx-1 mb-6 cursor-pointer">
+              <div className="mx-1 mb-6 cursor-pointer tracking-tight">
                 <img className="mb-2" src={product.images[0].src} alt="" />
                 <h2 className="mb-1 text-xs font-semibold uppercase">
                   {product.title}

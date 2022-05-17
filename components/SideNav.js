@@ -7,12 +7,12 @@ const SideNav = () => {
       <ul className="flex justify-between px-5 py-5 md:flex-col md:space-y-1 md:text-right">
         <div>
           <li className="text-xs md:text-[11px]">
-            <Link href="/">
+            <Link href="/bags">
               <a>ABOUT</a>
             </Link>
           </li>
           <li className="text-xs md:text-[11px]">
-            <Link href="/about">
+            <Link href="/bags">
               <a>DONATE</a>
             </Link>
           </li>
@@ -21,23 +21,31 @@ const SideNav = () => {
         <br />
         <div className="text-right">
           <li className="text-xs md:text-[11px]">
-            <Link href="/about">
-              <a>FACEBOOK</a>
+            <Link href="https://www.instagram.com/kwam_/">
+              <a target="_blank" rel="noreferrer">
+                FACEBOOK
+              </a>
             </Link>
           </li>
           <li className="text-xs md:text-[11px]">
-            <Link href="/about">
-              <a>TWITTER</a>
+            <Link href="https://www.instagram.com/kwam_/">
+              <a target="_blank" rel="noreferrer">
+                TWITTER
+              </a>
             </Link>
           </li>
           <li className="text-xs md:text-[11px]">
-            <Link href="/about">
-              <a>INSTAGRAM</a>
+            <Link href="https://www.instagram.com/kwam_/">
+              <a target="_blank" rel="noreferrer">
+                INSTAGRAM
+              </a>
             </Link>
           </li>
           <li className="text-xs md:text-[11px]">
-            <Link href="/about">
-              <a>TIK TOK</a>
+            <Link href="https://www.instagram.com/kwam_/">
+              <a target="_blank" rel="noreferrer">
+                TIK TOK
+              </a>
             </Link>
           </li>
         </div>

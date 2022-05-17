@@ -25,13 +25,14 @@ const Product = ({ product }) => {
   // }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-7">
+    <div className="grid grid-cols-1 tracking-tight md:grid-cols-7">
       <div>
         <div className="md:col-span-4">
           <img
             src={product.images[0].src}
             alt=""
             // className="h-[300px]"
+            className="max-h-[550px] w-full object-cover"
           />
         </div>
         {/* <div className="col-span-1 grid grid-cols-3">

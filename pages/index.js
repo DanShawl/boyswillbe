@@ -25,7 +25,7 @@ export default function Home({ products, product }) {
         />
         <div className="absolute inset-x-0 bottom-[50%] text-center leading-4 text-black">
           <Link href="/bags">
-            <button className="bg-white py-2 px-3 text-sm font-normal ">
+            <button className="bg-white py-2 px-3 text-sm font-normal tracking-tight">
               DISCOVER THE COLLECTION
             </button>
           </Link>

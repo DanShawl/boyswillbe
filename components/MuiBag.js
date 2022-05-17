@@ -46,7 +46,7 @@ export const MuiBag = () => {
       >
         <Box
           p={2}
-          className="w-screen px-3 sm:w-[400px] lg:w-[550px]"
+          className="w-screen px-3 tracking-tight sm:w-[400px] lg:w-[550px]"
           // textAlign={'center'}
           role="presentation"
         >
