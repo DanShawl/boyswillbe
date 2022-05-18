@@ -87,16 +87,21 @@ export const MuiBag = () => {
           {/* Items list */}
           {checkout.lineItems?.length ? (
             checkout.lineItems.map((item) => (
-              <div className="grid grid-cols-3 gap-3 text-xs">
-                <img className="mb-3" src={item.variant?.image.src} alt="" />
-                <div>
+              <div className="grid grid-cols-6 gap-3 text-xs">
+                {/* {console.log(item)} */}
+                <img
+                  className="col-span-2 mb-3"
+                  src={item.variant?.image.src}
+                  alt=""
+                />
+                <div className=" col-span-3">
                   <h2 className="mb-3 uppercase">
                     <strong>{item.title}</strong>{' '}
                   </h2>
-                  <p className="text-xs uppercase">
+                  {/* <p className="text-xs uppercase">
                     {item.variant?.selectedOptions[0].name}{' '}
                     <strong>{item.variant?.title}</strong>
-                  </p>
+                  </p> */}
                   <p className="text-xs uppercase">
                     {' '}
                     QUANTITY <strong>{item.quantity}</strong>

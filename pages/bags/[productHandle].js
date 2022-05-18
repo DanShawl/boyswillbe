@@ -117,6 +117,7 @@ const Product = ({ product }) => {
           ) : (
             <button
               className="w-full bg-neutral-200 py-2 text-sm text-black "
+              disabled
               onClick={() => addItemToCheckout(product.variants[0].id, 1)}
             >
               OUT OF STOCK
