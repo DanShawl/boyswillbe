@@ -27,7 +27,7 @@ const NavBar = () => {
       <div className="flex h-[100%] items-center justify-between text-left md:h-7 md:items-start">
         <a
           href="/"
-          className="ml-2 flex items-center space-x-2 text-left text-2xl font-extrabold sm:text-sm"
+          className="ml-2 flex items-center space-x-2 text-left text-2xl font-extrabold sm:items-start sm:text-left sm:text-sm md:ml-0  md:flex-col md:space-x-0 lg:flex-row lg:space-x-2"
         >
           {/* <h1 className="text-lg">BOYS WILL BE</h1> */}
 
@@ -72,7 +72,7 @@ const NavBar = () => {
       <ul
         className={
           (openNav ? 'left-0 flex-1' : '-left-full ') +
-          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-black duration-500 md:static md:w-auto md:space-y-0 md:bg-transparent md:px-0 md:font-normal'
+          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-black duration-500 sm:pt-12  md:static md:w-auto md:space-y-0 md:bg-transparent md:px-0 md:font-normal lg:pt-8'
         }
         // className="flex items-center justify-between space-x-7 p-2 text-gray-700"
       >
@@ -118,10 +118,12 @@ const NavBar = () => {
             <a>NEW ARRIVALS</a>
           </Link>
         </li>
+
         <h3 className=" pt-10 pb-3 md:hidden">
           MY BAG (
           {checkout.lineItems?.length ? checkout.lineItems?.length : '0'})
         </h3>
+
         <div className="flex space-x-1 overflow-x-scroll md:hidden">
           {checkout.lineItems?.length
             ? checkout.lineItems?.map((item) => (
@@ -129,7 +131,7 @@ const NavBar = () => {
                   key={item.id}
                   src={item.variant?.image.src}
                   alt=""
-                  className=" w-[45%]"
+                  className=" w-[45%] cursor-pointer sm:w-[30%]"
                   onClick={() => {
                     setOpenNav(!openNav)
                     openBag()
@@ -139,9 +141,9 @@ const NavBar = () => {
             : null}
         </div>
         {checkout.lineItems?.length ? (
-          <Link href={checkout.webUrl}>
-            <div className="flex items-center space-x-0">
-              <p className="text-xs font-medium">GO TO CHECKOUT</p>
+          <Link href={checkout.webUrl} className="">
+            <div className="flex items-center space-x-0 sm:hidden">
+              <button className="text-xs font-medium">GO TO CHECKOUT</button>
               <MdChevronRight />
             </div>
           </Link>

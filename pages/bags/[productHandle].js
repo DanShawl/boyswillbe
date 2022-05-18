@@ -30,18 +30,18 @@ const Product = ({ product }) => {
 
   return (
     <div className="mb-8 grid grid-cols-1 tracking-tight md:grid-cols-7">
-      <div>
-        <div className="md:col-span-4">
+      <div className="grid-cols-5 md:col-span-4 lg:grid">
+        <div className="lg:col-span-4 ">
           <img
             // src={product.images[0].src}
             src={topImage.src}
             alt=""
             // className="h-[300px]"
-            className="max-h-[450px] w-full object-cover object-bottom"
+            className="max-h-[450px] w-full object-cover object-bottom sm:max-h-[600px] sm:object-center"
           />
         </div>
         {/* <div className="col-span-1  grid grid-cols-3"> */}
-        <div className="mt-1 flex space-x-1 overflow-x-scroll md:hidden">
+        <div className="mt-1 flex space-x-1 overflow-x-scroll md:col-span-1 lg:grid lg:flex-col lg:overflow-x-hidden">
           {product.images.map((productImage) => (
             // <Image
             //   src={productImage.src}
@@ -53,31 +53,14 @@ const Product = ({ product }) => {
             <img
               src={productImage.src}
               alt=""
-              className="w-[30%]"
+              className="w-[30%] cursor-pointer sm:w-[20%] md:w-[30%] lg:w-full"
               onClick={() => setTopImage(productImage)}
               key={productImage.id}
             />
           ))}
         </div>
-        {/* <div className="col-span-1 grid grid-cols-3">
-          <img
-            src={product.images[0].src}
-            alt=""
-            // className="h-[300px]"
-          />
-          <img
-            src={product.images[0]?.src}
-            alt=""
-            // className="h-[300px]"
-          />
-          <img
-            src={product.images[0].src}
-            alt=""
-            // className="h-[300px]"
-          />
-        </div> */}
       </div>
-      <div className="col-span-2 px-4 pt-6 md:ml-6 md:pt-6">
+      <div className="col-span-3 px-4 pt-6 md:ml-6 md:pt-6">
         <div>
           <p className="text-xs uppercase">{product.productType}</p>
           <h2 className="md:text-normal pb-3 text-sm font-semibold uppercase">

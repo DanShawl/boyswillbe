@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       {/* <Bag /> */}
       {/* <div className="col-span-3 flex items-center justify-center md:py-10"> */}
       {/* <div className="col-span-3 md:py-10">{children}</div> */}
-      <div className="col-span-3">{children}</div>
+      <div className="col-span-4 lg:col-span-3">{children}</div>
       <SideNav />
     </div>
   )
