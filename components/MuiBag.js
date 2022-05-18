@@ -7,6 +7,7 @@ import {
   Divider,
 } from '@mui/material'
 import { ShopContext } from '../context/shopContext'
+import Link from 'next/link'
 
 export const MuiBag = () => {
   const { checkout, removeLineItem, isBagOpen, openBag, closeBag } =
@@ -49,6 +50,7 @@ export const MuiBag = () => {
         anchor={isDesktop ? 'right' : 'bottom'}
         open={isBagOpen}
         onClose={() => closeBag(false)}
+        onOpen={() => openBag(true)}
       >
         {/* <Divider></Divider> */}
         <Box
@@ -59,9 +61,11 @@ export const MuiBag = () => {
         >
           {checkout.lineItems?.length ? (
             <div className="pb-5">
-              <button className="mt-2 w-full bg-black py-2 text-xs uppercase text-white">
-                PROCEED TO CHECKOUT
-              </button>
+              <Link href={checkout.webUrl}>
+                <button className="mt-2 w-full bg-neutral-900 py-2 text-xs font-semibold uppercase text-white">
+                  GO TO CHECKOUT
+                </button>
+              </Link>
               <button
                 onClick={() => closeBag()}
                 className="mt-2 w-full text-xs underline"
@@ -72,7 +76,7 @@ export const MuiBag = () => {
           ) : (
             <button
               onClick={() => closeBag()}
-              className="mb-5 w-full bg-black py-2 text-xs uppercase text-white"
+              className="mb-5 w-full bg-neutral-900 py-2 text-xs font-semibold uppercase text-white"
             >
               Start Shopping
             </button>
@@ -87,10 +91,10 @@ export const MuiBag = () => {
           {/* Items list */}
           {checkout.lineItems?.length ? (
             checkout.lineItems.map((item) => (
-              <div className="grid grid-cols-6 gap-3 text-xs">
+              <div className="grid grid-cols-6 gap-3 text-xs" key={item.id}>
                 {/* {console.log(item)} */}
                 <img
-                  className="col-span-2 mb-3"
+                  className="col-span-2 mb-3 max-h-36 w-full object-cover object-bottom"
                   src={item.variant?.image.src}
                   alt=""
                 />

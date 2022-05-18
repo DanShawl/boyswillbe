@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { client } from '../utils/shopify'
 import boyswillbeimg from '../public/boyswillbe-hero-image.jpg'
 import Head from 'next/head'
-console.log(client)
+// console.log(client)
 
 export default function Home({ products, product }) {
-  console.log(products)
-  console.log(product)
+  // console.log(products)
+  // console.log(product)
   return (
     <div className="z-10 flex items-center justify-center">
       <Head>

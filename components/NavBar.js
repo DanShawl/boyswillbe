@@ -1,5 +1,10 @@
 import React, { useState, useContext } from 'react'
-import { MdMenu, MdChevronLeft, MdOutlineShoppingBag } from 'react-icons/md'
+import {
+  MdMenu,
+  MdChevronLeft,
+  MdChevronRight,
+  MdOutlineShoppingBag,
+} from 'react-icons/md'
 import Link from 'next/link'
 import {
   BsList,
@@ -22,7 +27,7 @@ const NavBar = () => {
       <div className="flex h-[100%] items-center justify-between text-left md:h-7 md:items-start">
         <a
           href="/"
-          className="ml-2 text-left text-2xl font-extrabold sm:text-sm"
+          className="ml-2 flex items-center space-x-2 text-left text-2xl font-extrabold sm:text-sm"
         >
           {/* <h1 className="text-lg">BOYS WILL BE</h1> */}
 
@@ -31,6 +36,7 @@ const NavBar = () => {
             alt=""
             className="-mt-1 h-9 w-9 object-cover"
           />
+          <h1 className="nav__title mt-2 tracking-tighter">BOYS WILL BE</h1>
         </a>
         <div className="flex">
           {/* {openNav ? null : ( */}
@@ -120,6 +126,7 @@ const NavBar = () => {
           {checkout.lineItems?.length
             ? checkout.lineItems?.map((item) => (
                 <img
+                  key={item.id}
                   src={item.variant?.image.src}
                   alt=""
                   className=" w-[45%]"
@@ -131,6 +138,14 @@ const NavBar = () => {
               ))
             : null}
         </div>
+        {checkout.lineItems?.length ? (
+          <Link href={checkout.webUrl}>
+            <div className="flex items-center space-x-0">
+              <p className="text-xs font-medium">GO TO CHECKOUT</p>
+              <MdChevronRight />
+            </div>
+          </Link>
+        ) : null}
       </ul>
     </nav>
   )

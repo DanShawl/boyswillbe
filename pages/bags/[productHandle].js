@@ -30,11 +30,6 @@ const Product = ({ product }) => {
 
   return (
     <div className="mb-8 grid grid-cols-1 tracking-tight md:grid-cols-7">
-      {/* <Head>
-        <title>
-          Boys Will Be | Bags {'>'} {product.title}
-        </title>
-      </Head> */}
       <div>
         <div className="md:col-span-4">
           <img
@@ -42,7 +37,7 @@ const Product = ({ product }) => {
             src={topImage.src}
             alt=""
             // className="h-[300px]"
-            className="max-h-[500px] w-full object-cover"
+            className="max-h-[450px] w-full object-cover object-bottom"
           />
         </div>
         {/* <div className="col-span-1  grid grid-cols-3"> */}
@@ -60,6 +55,7 @@ const Product = ({ product }) => {
               alt=""
               className="w-[30%]"
               onClick={() => setTopImage(productImage)}
+              key={productImage.id}
             />
           ))}
         </div>
@@ -84,12 +80,12 @@ const Product = ({ product }) => {
       <div className="col-span-2 px-4 pt-6 md:ml-6 md:pt-6">
         <div>
           <p className="text-xs uppercase">{product.productType}</p>
-          <h2 className="text-normal pb-3 font-semibold uppercase md:text-lg">
+          <h2 className="md:text-normal pb-3 text-sm font-semibold uppercase">
             {product.title}
           </h2>
         </div>
 
-        <div className="flex justify-between pb-5">
+        <div className="flex justify-between pb-6">
           <p className="text-sm font-semibold">$ {product.variants[0].price}</p>
           <div className="flex items-center gap-x-2 text-xs uppercase">
             <MdCircle
@@ -106,17 +102,17 @@ const Product = ({ product }) => {
             <h2>{variant.title}</h2>
           ))}
         </div> */}
-        <div className="mb-3">
+        <div className="mb-6">
           {product.availableForSale ? (
             <button
-              className="w-full bg-black py-2 text-sm text-white "
+              className="w-full bg-neutral-900 py-2 text-xs font-semibold text-white"
               onClick={() => addItemToCheckout(product.variants[0].id, 1)}
             >
               PLACE IN BAG
             </button>
           ) : (
             <button
-              className="w-full bg-neutral-200 py-2 text-sm text-black "
+              className="w-full bg-neutral-200 py-2 text-xs font-semibold text-black"
               disabled
               onClick={() => addItemToCheckout(product.variants[0].id, 1)}
             >
@@ -125,9 +121,10 @@ const Product = ({ product }) => {
           )}
         </div>
         <p className="text-xs font-light">{product.description}</p>
-        <ul className="py-3">
+        <ul className="py-6">
           {product.options.map((option) => (
-            <li className="flex space-x-2 text-xs uppercase">
+            <li className="flex space-x-2 text-xs uppercase" key={option.id}>
+              {/* {console.log(option)} */}
               <p>
                 <strong>{option.name}</strong>
               </p>
@@ -149,6 +146,8 @@ export const getServerSideProps = async ({ query }) => {
   const productHandle = query.productHandle
   const product = await client.product.fetchByHandle(productHandle)
   // const product = await client.product.fetch(productHandle)
+  // console.log(context.req.headers.referer)
+
   return {
     props: {
       product: product,

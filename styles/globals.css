@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  font-family: 'Radio Canada', sans-serif;
+  /* font-family: 'Radio Canada', sans-serif; */
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+.nav__title {
+  font-family: 'Josefin Sans', sans-serif;
 }
