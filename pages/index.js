@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { client } from '../utils/shopify'
 import boyswillbeimg from '../public/boyswillbe-hero-image.jpg'
+import Head from 'next/head'
 console.log(client)
 
 export default function Home({ products, product }) {
@@ -9,6 +10,9 @@ export default function Home({ products, product }) {
   console.log(product)
   return (
     <div className="z-10 flex items-center justify-center">
+      <Head>
+        <title>Boys Will Be</title>
+      </Head>
       <div className="hero-image relative h-screen max-h-screen md:p-10">
         {/* <Image
           src={'/../public/boyswillbe-hero-image.jpg'}

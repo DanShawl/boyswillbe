@@ -3,6 +3,8 @@ import { useState, useContext } from 'react'
 import { client } from '../../utils/shopify'
 import { ShopContext } from '../../context/shopContext'
 import { MdCircle } from 'react-icons/md'
+import Image from 'next/dist/client/image'
+// import { Head } from 'next/dist/shared/lib/head'
 
 const Product = ({ product }) => {
   const router = useRouter()
@@ -10,6 +12,8 @@ const Product = ({ product }) => {
   const [quantity, setQuantity] = useState(0)
   const { addItemToCheckout, checkout, removeLineItem } =
     useContext(ShopContext)
+
+  const [topImage, setTopImage] = useState(product.images[0])
 
   // console.log(product)
 
@@ -26,14 +30,38 @@ const Product = ({ product }) => {
 
   return (
     <div className="mb-8 grid grid-cols-1 tracking-tight md:grid-cols-7">
+      {/* <Head>
+        <title>
+          Boys Will Be | Bags {'>'} {product.title}
+        </title>
+      </Head> */}
       <div>
         <div className="md:col-span-4">
           <img
-            src={product.images[0].src}
+            // src={product.images[0].src}
+            src={topImage.src}
             alt=""
             // className="h-[300px]"
-            className="max-h-[550px] w-full object-cover"
+            className="max-h-[500px] w-full object-cover"
           />
+        </div>
+        {/* <div className="col-span-1  grid grid-cols-3"> */}
+        <div className="mt-1 flex space-x-1 overflow-x-scroll md:hidden">
+          {product.images.map((productImage) => (
+            // <Image
+            //   src={productImage.src}
+            //   onClick={() => setTopImage(productImage)}
+            //   width={60}
+            //   height={100}
+            //   objectFit="cover"
+            // />
+            <img
+              src={productImage.src}
+              alt=""
+              className="w-[30%]"
+              onClick={() => setTopImage(productImage)}
+            />
+          ))}
         </div>
         {/* <div className="col-span-1 grid grid-cols-3">
           <img
@@ -55,18 +83,18 @@ const Product = ({ product }) => {
       </div>
       <div className="col-span-2 px-4 pt-6 md:ml-6 md:pt-6">
         <div>
-          <p className="text-sm uppercase">{product.productType}</p>
-          <h2 className="text-normal pb-3 font-bold uppercase md:text-lg">
+          <p className="text-xs uppercase">{product.productType}</p>
+          <h2 className="text-normal pb-3 font-semibold uppercase md:text-lg">
             {product.title}
           </h2>
         </div>
 
         <div className="flex justify-between pb-5">
-          <p className="text-sm font-bold">$ {product.variants[0].price}</p>
+          <p className="text-sm font-semibold">$ {product.variants[0].price}</p>
           <div className="flex items-center gap-x-2 text-xs uppercase">
             <MdCircle
               className={`text-xs ${
-                product.availableForSale ? 'text-green-300' : 'text-red-500'
+                product.availableForSale ? ' text-green-500' : 'text-red-500'
               }`}
             />
             <p>{product.availableForSale ? 'In Stock' : 'Out of Stock'}</p>
@@ -79,14 +107,33 @@ const Product = ({ product }) => {
           ))}
         </div> */}
         <div className="mb-3">
-          <button
-            className="w-full bg-black py-2 text-sm text-white "
-            onClick={() => addItemToCheckout(product.variants[0].id, 1)}
-          >
-            PLACE IN BAG
-          </button>
+          {product.availableForSale ? (
+            <button
+              className="w-full bg-black py-2 text-sm text-white "
+              onClick={() => addItemToCheckout(product.variants[0].id, 1)}
+            >
+              PLACE IN BAG
+            </button>
+          ) : (
+            <button
+              className="w-full bg-neutral-200 py-2 text-sm text-black "
+              onClick={() => addItemToCheckout(product.variants[0].id, 1)}
+            >
+              OUT OF STOCK
+            </button>
+          )}
         </div>
         <p className="text-xs font-light">{product.description}</p>
+        <ul className="py-3">
+          {product.options.map((option) => (
+            <li className="flex space-x-2 text-xs uppercase">
+              <p>
+                <strong>{option.name}</strong>
+              </p>
+              <p>{option.values[0].value}</p>
+            </li>
+          ))}
+        </ul>
       </div>
       {/* video @ 1:28 for changing main image */}
     </div>

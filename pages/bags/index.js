@@ -1,11 +1,14 @@
 import React from 'react'
 import { client } from '../../utils/shopify'
 import Link from 'next/dist/client/link'
+import Head from 'next/dist/shared/lib/head'
 
 export default function Bags({ products }) {
-  // console.log(products)
   return (
     <div className="mx-1 mb-8 grid grid-cols-2 lg:grid-cols-3">
+      <Head>
+        <title>Boys Will Be | Bags</title>
+      </Head>
       {products
         ? products.map((product) => (
             <Link href={`/bags/${product.handle}`} className="cursor-pointer">

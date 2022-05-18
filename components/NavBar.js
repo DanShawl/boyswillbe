@@ -65,48 +65,57 @@ const NavBar = () => {
 
       <ul
         className={
-          (openNav ? 'left-0 flex-1 px-5 ' : '-left-full ') +
-          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white pt-8 font-semibold leading-3 text-black duration-500 md:static md:w-auto md:space-y-0 md:bg-transparent md:font-normal'
+          (openNav ? 'left-0 flex-1' : '-left-full ') +
+          ' transition-left fixed bottom-0 top-14 w-full items-center space-y-3  bg-white px-5 pt-8 font-semibold leading-3 text-black duration-500 md:static md:w-auto md:space-y-0 md:bg-transparent md:px-0 md:font-normal'
         }
         // className="flex items-center justify-between space-x-7 p-2 text-gray-700"
       >
         <h3 className="pb-3 md:hidden">APPAREL</h3>
         <li
-          className={`text-xs md:text-[11px]`}
+          className={`text-xs text-zinc-700 md:text-[11px] md:text-black`}
           onClick={() => setOpenNav(!openNav)}
         >
           <Link href="/bags">
             <a>SHOP BAGS</a>
           </Link>
         </li>
-        <li className={`text-xs md:text-[11px]`}>
+        <li className={`text-xs text-zinc-700 md:text-[11px] md:text-black`}>
           <Link href="/bags">
             <a>SHOP HOODIES</a>
           </Link>
         </li>
-        <li className={`text-xs md:text-[11px]`}>
+        <li className={`text-xs text-zinc-700 md:text-[11px] md:text-black`}>
           <Link href="/bags">
             <a>SHOP HATS</a>
           </Link>
         </li>
 
         <br />
-        <li className={`text-xs md:text-[11px]`} onClick={() => openBag()}>
-          <Link href="/">
+        <br />
+        {/* <li className={`text-xs md:text-[11px]`} onClick={() => openBag()}>
+          <Link href="">
             <a>
-              BAG{' '}
+              MY BAG{' '}
               {checkout.lineItems?.length ? (
                 <strong>({checkout.lineItems?.length} ITEMS)</strong>
               ) : null}
             </a>
           </Link>
-        </li>
-        <li className={`text-xs md:text-[11px]`}>
+        </li> */}
+        <li className={`text-xs text-zinc-700 md:text-[11px] md:text-black`}>
           <Link href="/bags">
             <a>COLLECTIONS</a>
           </Link>
         </li>
-        <h3 className=" pt-10 pb-3 md:hidden">MY BAG</h3>
+        <li className={`text-xs text-zinc-700 md:text-[11px] md:text-black`}>
+          <Link href="/bags">
+            <a>NEW ARRIVALS</a>
+          </Link>
+        </li>
+        <h3 className=" pt-10 pb-3 md:hidden">
+          MY BAG (
+          {checkout.lineItems?.length ? checkout.lineItems?.length : '0'})
+        </h3>
         <div className="flex space-x-1 overflow-x-scroll md:hidden">
           {checkout.lineItems?.length
             ? checkout.lineItems?.map((item) => (
@@ -114,6 +123,10 @@ const NavBar = () => {
                   src={item.variant?.image.src}
                   alt=""
                   className=" w-[45%]"
+                  onClick={() => {
+                    setOpenNav(!openNav)
+                    openBag()
+                  }}
                 />
               ))
             : null}
